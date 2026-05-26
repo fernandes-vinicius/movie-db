@@ -1,0 +1,99 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "@fontsource-variable/inter";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --font-sans:
+    "Inter Variable", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+@theme inline {
+  --font-sans: "Inter Variable", sans-serif;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-hover: var(--primary-hover);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-destructive-hover: var(--destructive-hover);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-sm: calc(var(--radius) * 0.5);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) * 1.5);
+  --radius-xl: calc(var(--radius) * 2);
+}
+
+:root {
+  /* Backgrounds */
+  --background: #111827;
+  --foreground: #ffffff;
+
+  /* Card / surface */
+  --card: #1e2a3a;
+  --card-foreground: #ffffff;
+
+  /* Primary — brand blue (nav active, genre badges, CTAs) */
+  --primary: #4361ee;
+  --primary-foreground: #ffffff;
+  --primary-hover: #3451d1;
+
+  /* Secondary — elevated surface / hover state */
+  --secondary: #243241;
+  --secondary-foreground: #ffffff;
+
+  /* Muted — subtle backgrounds, inputs */
+  --muted: #1a2234;
+  --muted-foreground: #94a3b8;
+
+  /* Accent — amber (logo icon, rating badges) */
+  --accent: #f5a623;
+  --accent-foreground: #111827;
+
+  /* Destructive — red (heart filled, add to favorites button) */
+  --destructive: #e5383b;
+  --destructive-foreground: #ffffff;
+  --destructive-hover: #c62d30;
+
+  /* Borders & inputs */
+  --border: #2d3748;
+  --input: #2d3748;
+  --ring: #4361ee;
+
+  /* Radius scale */
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+  html {
+    @apply font-sans;
+  }
+}
