@@ -4,6 +4,10 @@
 
 Aplicação React para explorar filmes, ver detalhes e gerenciar uma lista de favoritos, consumindo a API do [The Movie Database (TMDB)](https://www.themoviedb.org/).
 
+## Deploy
+
+Hospedado na [Vercel](https://vercel.com) — acesse em: **https://movie-db-inky-five.vercel.app/**
+
 ## Funcionalidades
 
 - **Filmes populares** — grid responsivo com infinite scroll
