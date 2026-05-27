@@ -86,6 +86,12 @@
   --radius: 0.5rem;
 }
 
+@layer components {
+  .movie-grid {
+    @apply grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5;
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

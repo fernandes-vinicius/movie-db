@@ -7,6 +7,7 @@ module.exports = {
   moduleNameMapper: {
     "\\.(css|less|scss|sass)$": "identity-obj-proxy",
     "\\.(jpg|jpeg|png|gif|svg|webp)$": "<rootDir>/__mocks__/fileMock.cjs",
+    "^@/(.*)$": "<rootDir>/src/$1",
   },
   testMatch: ["**/*.test.(ts|tsx)", "**/*.spec.(ts|tsx)"],
   moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json"],

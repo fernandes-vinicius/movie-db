@@ -6,7 +6,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/shared/components/ui/dropdown-menu";
-import { nav } from "@/shared/config/nav-config";
+import { NAV_CONFIG } from "@/shared/config/nav-config";
 
 export function MobileMenu() {
   return (
@@ -16,7 +16,7 @@ export function MobileMenu() {
       </DropdownMenuTrigger>
 
       <DropdownMenuContent align="end" className="w-44">
-        {nav.map(({ to, label, end }) => (
+        {NAV_CONFIG.map(({ to, label, end }) => (
           <DropdownMenuItem key={to} asChild>
             <NavLink
               to={to}

@@ -10,6 +10,8 @@ import {
   EmptyStateIcon,
   EmptyStateTitle,
 } from "@/shared/components/ui/empty-state";
+import { useFavorites } from "@/shared/contexts/favorites-context";
+import { cn } from "@/lib/utils";
 import { formatDate } from "@/shared/utils/format-date";
 import { getImageUrl } from "@/shared/utils/get-image-url";
 
@@ -19,6 +21,7 @@ interface MovieDetailViewProps {
 
 export function MovieDetailView({ movieId }: MovieDetailViewProps) {
   const { data: movie, isLoading, isError } = useMovieDetails(movieId);
+  const { isFavorite, toggleFavorite } = useFavorites();
 
   if (isLoading) return <MovieDetailSkeleton />;
 
@@ -34,6 +37,23 @@ export function MovieDetailView({ movieId }: MovieDetailViewProps) {
         </EmptyStateDescription>
       </EmptyState>
     );
+  }
+
+  const safeMovie = movie;
+  const active = isFavorite(safeMovie.id);
+
+  function handleFavoriteClick() {
+    toggleFavorite({
+      id: safeMovie.id,
+      title: safeMovie.title,
+      poster_path: safeMovie.poster_path,
+      backdrop_path: safeMovie.backdrop_path,
+      vote_average: safeMovie.vote_average,
+      vote_count: safeMovie.vote_count,
+      release_date: safeMovie.release_date,
+      overview: safeMovie.overview,
+      genre_ids: safeMovie.genres.map((g) => g.id),
+    });
   }
 
   const backdropUrl = getImageUrl(movie.backdrop_path, "original");
@@ -87,9 +107,17 @@ export function MovieDetailView({ movieId }: MovieDetailViewProps) {
           </div>
         )}
 
-        <Button variant="destructive" size="lg" className="mt-2 w-fit">
-          <HeartIcon size={18} />
-          Adicionar aos Favoritos
+        <Button
+          variant={active ? "destructive" : "outline"}
+          size="lg"
+          className="mt-2 w-fit"
+          onClick={handleFavoriteClick}
+        >
+          <HeartIcon
+            size={18}
+            className={cn(active && "fill-current")}
+          />
+          {active ? "Remover dos Favoritos" : "Adicionar aos Favoritos"}
         </Button>
       </div>
     </div>

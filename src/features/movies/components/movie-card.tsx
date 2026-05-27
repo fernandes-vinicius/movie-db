@@ -12,6 +12,19 @@ function MovieCard({ className, ...props }: React.ComponentProps<typeof Link>) {
   );
 }
 
+function MovieCardAction({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) {
+  return (
+    <div
+      data-slot="movie-card-action"
+      className={cn("absolute top-2 right-2 z-10", className)}
+      {...props}
+    />
+  );
+}
+
 interface MovieCardPosterProps extends React.HTMLAttributes<HTMLDivElement> {
   src: string | null;
   alt: string;
@@ -21,6 +34,7 @@ function MovieCardPoster({
   src,
   alt,
   className,
+  children,
   ...props
 }: MovieCardPosterProps) {
   return (
@@ -44,6 +58,7 @@ function MovieCardPoster({
           Sem imagem
         </div>
       )}
+      {children}
     </div>
   );
 }
@@ -77,4 +92,10 @@ function MovieCardTitle({
   );
 }
 
-export { MovieCard, MovieCardFooter, MovieCardPoster, MovieCardTitle };
+export {
+  MovieCard,
+  MovieCardAction,
+  MovieCardFooter,
+  MovieCardPoster,
+  MovieCardTitle,
+};

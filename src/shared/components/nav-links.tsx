@@ -1,12 +1,12 @@
 import { NavLink } from "react-router";
 import { buttonVariants } from "@/shared/components/ui/button";
-import { nav } from "@/shared/config/nav-config";
+import { NAV_CONFIG } from "@/shared/config/nav-config";
 
 export function NavLinks() {
   return (
     <nav aria-label="Navegação principal">
       <ul className="flex items-center gap-1">
-        {nav.map(({ to, label, end }) => (
+        {NAV_CONFIG.map(({ to, label, end }) => (
           <li key={to}>
             <NavLink
               to={to}

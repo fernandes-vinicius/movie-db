@@ -1,4 +1,6 @@
 export {
+  AlertCircle as AlertCircleIcon,
+  ChevronDown as ChevronDownIcon,
   Clapperboard as ClapperboardIcon,
   Heart as HeartIcon,
   Home as HomeIcon,

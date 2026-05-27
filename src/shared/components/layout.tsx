@@ -6,7 +6,6 @@ export function Layout() {
   return (
     <>
       <SEO />
-
       <div className="min-h-svh bg-background">
         <Header />
         <div className="px-4 py-6">
