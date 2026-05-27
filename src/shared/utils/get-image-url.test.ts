@@ -10,20 +10,20 @@ describe("getImageUrl", () => {
   });
 
   it("usa tamanho w500 por padrão", () => {
-    expect(getImageUrl("/poster.jpg")).toBe(
-      "https://image.tmdb.org/t/p/w500/poster.jpg",
+    expect(getImageUrl("/poster.webp")).toBe(
+      "https://image.tmdb.org/t/p/w500/poster.webp",
     );
   });
 
   it("aplica o tamanho informado", () => {
-    expect(getImageUrl("/poster.jpg", "w342")).toBe(
-      "https://image.tmdb.org/t/p/w342/poster.jpg",
+    expect(getImageUrl("/poster.webp", "w342")).toBe(
+      "https://image.tmdb.org/t/p/w342/poster.webp",
     );
   });
 
   it("aplica tamanho original", () => {
-    expect(getImageUrl("/backdrop.jpg", "original")).toBe(
-      "https://image.tmdb.org/t/p/original/backdrop.jpg",
+    expect(getImageUrl("/backdrop.webp", "original")).toBe(
+      "https://image.tmdb.org/t/p/original/backdrop.webp",
     );
   });
 });

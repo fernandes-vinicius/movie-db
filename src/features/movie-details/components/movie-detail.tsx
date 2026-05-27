@@ -113,10 +113,7 @@ export function MovieDetailView({ movieId }: MovieDetailViewProps) {
           className="mt-2 w-fit"
           onClick={handleFavoriteClick}
         >
-          <HeartIcon
-            size={18}
-            className={cn(active && "fill-current")}
-          />
+          <HeartIcon size={18} className={cn(active && "fill-current")} />
           {active ? "Remover dos Favoritos" : "Adicionar aos Favoritos"}
         </Button>
       </div>

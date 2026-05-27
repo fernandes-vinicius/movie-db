@@ -50,11 +50,12 @@ export function MovieGrid({
   return (
     <>
       <div className="movie-grid">
-        {movies.map((movie) => (
+        {movies.map((movie, index) => (
           <MovieCard key={movie.id} to={`/movie/${movie.id}`}>
             <MovieCardPoster
               src={getImageUrl(movie.poster_path, "w342")}
               alt={movie.title}
+              priority={index < 4}
             >
               <MovieCardAction>
                 <FavoriteButton movie={movie} />

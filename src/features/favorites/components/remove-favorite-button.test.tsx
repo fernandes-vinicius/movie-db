@@ -2,7 +2,10 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import type { ReactNode } from "react";
 import { RemoveFavoriteButton } from "./remove-favorite-button";
-import { FavoritesProvider, useFavorites } from "@/shared/contexts/favorites-context";
+import {
+  FavoritesProvider,
+  useFavorites,
+} from "@/shared/contexts/favorites-context";
 import type { Movie } from "@/shared/types/tmdb-types";
 
 const movie: Movie = {
@@ -56,7 +59,9 @@ describe("RemoveFavoriteButton", () => {
 
     expect(screen.getByTestId("count")).toHaveTextContent("1");
 
-    await user.click(screen.getByRole("button", { name: /remover dos favoritos/i }));
+    await user.click(
+      screen.getByRole("button", { name: /remover dos favoritos/i }),
+    );
 
     expect(screen.getByTestId("count")).toHaveTextContent("0");
   });

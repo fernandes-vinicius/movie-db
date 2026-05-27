@@ -28,11 +28,13 @@ function MovieCardAction({
 interface MovieCardPosterProps extends React.HTMLAttributes<HTMLDivElement> {
   src: string | null;
   alt: string;
+  priority?: boolean;
 }
 
 function MovieCardPoster({
   src,
   alt,
+  priority = false,
   className,
   children,
   ...props
@@ -50,7 +52,8 @@ function MovieCardPoster({
         <img
           src={src}
           alt={alt}
-          loading="lazy"
+          loading={priority ? "eager" : "lazy"}
+          fetchPriority={priority ? "high" : "auto"}
           className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
         />
       ) : (
