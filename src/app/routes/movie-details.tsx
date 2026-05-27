@@ -1,5 +1,5 @@
 import { useParams } from "react-router";
-import { MovieDetailView } from "@/features/movie-details/components/movie-detail";
+import { MovieDetailView } from "@/features/movie-details/components/movie-detail-view";
 import { SEO } from "@/shared/components/seo";
 
 export function MovieDetails() {

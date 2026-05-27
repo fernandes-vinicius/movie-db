@@ -2,6 +2,7 @@ import { GenreBadge } from "@/features/movie-details/components/genre-badge";
 import { MovieDetailSkeleton } from "@/features/movie-details/components/movie-detail-skeleton";
 import { useMovieDetails } from "@/features/movie-details/hooks/use-movie-details";
 import { MovieRatingBadge } from "@/features/movies/components/movie-rating-badge";
+import { cn } from "@/lib/utils";
 import { ClapperboardIcon, HeartIcon } from "@/shared/components/icons";
 import { Button } from "@/shared/components/ui/button";
 import {
@@ -11,7 +12,6 @@ import {
   EmptyStateTitle,
 } from "@/shared/components/ui/empty-state";
 import { useFavorites } from "@/shared/contexts/favorites-context";
-import { cn } from "@/lib/utils";
 import { formatDate } from "@/shared/utils/format-date";
 import { getImageUrl } from "@/shared/utils/get-image-url";
 
