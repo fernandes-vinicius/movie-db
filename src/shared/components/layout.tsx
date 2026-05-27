@@ -7,9 +7,11 @@ export function Layout() {
     <>
       <SEO />
 
-      <div className="min-h-screen bg-background">
+      <div className="min-h-svh bg-background">
         <Header />
-        <Outlet />
+        <div className="px-4 py-6">
+          <Outlet />
+        </div>
       </div>
     </>
   );

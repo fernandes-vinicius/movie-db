@@ -13,6 +13,8 @@ export function SEO({ title, description = SEO_CONFIG.description }: SEOProps) {
         {title ? `${title} | ${SEO_CONFIG.title}` : SEO_CONFIG.title}
       </title>
       <meta name="description" content={description} />
+
+      {/* TODO: Add more SEO meta tags as needed */}
     </Helmet>
   );
 }

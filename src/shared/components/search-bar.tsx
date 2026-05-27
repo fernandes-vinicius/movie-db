@@ -1,11 +1,16 @@
-import { type SyntheticEvent, useState } from "react";
+import { type SyntheticEvent, useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router";
 import { Input } from "@/shared/components/ui/input";
 
 export function SearchBar() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-  const [inputValue, setInputValue] = useState(searchParams.get("q") ?? "");
+  const queryParam = searchParams.get("q") ?? "";
+  const [inputValue, setInputValue] = useState(queryParam);
+
+  useEffect(() => {
+    setInputValue(queryParam);
+  }, [queryParam]);
 
   function handleSubmit(e: SyntheticEvent<HTMLFormElement>) {
     e.preventDefault();

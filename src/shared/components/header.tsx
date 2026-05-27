@@ -5,16 +5,18 @@ import { SearchBar } from "@/shared/components/search-bar";
 
 export function Header() {
   return (
-    <header className="flex h-16 items-center gap-4 border-border border-b bg-background px-6">
-      <Logo />
-      <div className="flex flex-1 justify-center">
-        <SearchBar />
-      </div>
-      <div className="hidden md:block">
-        <NavLinks />
-      </div>
-      <div className="md:hidden">
-        <MobileMenu />
+    <header className="sticky top-0 z-50 flex w-full items-center border-b bg-background">
+      <div className="flex h-16 w-full items-center gap-2 px-4">
+        <Logo />
+        <div className="flex flex-1 justify-center">
+          <SearchBar />
+        </div>
+        <div className="hidden md:block">
+          <NavLinks />
+        </div>
+        <div className="md:hidden">
+          <MobileMenu />
+        </div>
       </div>
     </header>
   );
