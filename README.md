@@ -119,3 +119,38 @@ src/
 | `VITE_TMDB_API_KEY` | Chave de API do TMDB (obrigatória) |
 | `VITE_TMDB_BASE_URL` | URL base da API do TMDB |
 | `VITE_TMDB_IMAGE_BASE_URL` | URL base para imagens do TMDB |
+
+## Decisões de Arquitetura
+
+### Feature-Based Architecture (Vertical Slices)
+
+O projeto adota organização **vertical por domínio de negócio** em vez de horizontal por camada técnica. Cada feature encapsula seus próprios componentes, hooks e utilitários:
+
+```
+features/
+├── favorites/     → componentes, hooks e utils de favoritos
+├── movies/        → componentes e hooks de filmes populares
+├── movie-details/ → componentes e hooks da página de detalhes
+└── search/        → componentes e hooks de busca
+```
+
+Código compartilhado entre features fica em `shared/` (tipos, componentes de UI, contextos, utilitários), e o acesso à API é isolado em `api/`.
+
+### Por que não Clean Architecture
+
+Clean Architecture (Robert C. Martin) é uma abordagem horizontal com camadas explícitas — Entities, Use Cases, Interface Adapters e Frameworks — onde cada camada interna não conhece a externa. É especialmente adequada para:
+
+- Backends com lógica de negócio complexa e regras de domínio ricas
+- Sistemas que precisam trocar banco de dados, framework ou canal de entrega sem reescrever regras de negócio
+- Times grandes onde o isolamento rígido entre camadas evita acoplamento acidental
+
+Para um SPA React que consome uma API externa, esse custo não se justifica: manter interfaces de repositório (`IMovieRepository`), Use Cases em classes isoladas e uma camada de domínio sem React adicionaria boilerplate significativo sem ganho proporcional — o domínio de negócio da aplicação se resume a favoritar filmes com persistência local.
+
+### Princípios preservados
+
+Mesmo sem seguir Clean Architecture formalmente, alguns de seus princípios foram mantidos intencionalmente:
+
+- **Isolamento de infraestrutura** — `api/endpoints/` não importa nada do React; são funções puras que retornam dados
+- **Entidades estáveis** — `shared/types/` não depende de nenhuma camada externa
+- **Regra da dependência** — o fluxo `api → hooks → components` é unidirecional, sem inversões
+- **Sem dependências circulares** — features não se importam entre si; dependem apenas de `shared/`
