@@ -82,9 +82,9 @@ function MovieCardFooter({
 function MovieCardTitle({
   className,
   ...props
-}: React.HTMLAttributes<HTMLParagraphElement>) {
+}: React.HTMLAttributes<HTMLHeadingElement>) {
   return (
-    <p
+    <h3
       data-slot="movie-card-title"
       className={cn(
         "truncate font-medium text-foreground text-sm leading-snug",

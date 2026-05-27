@@ -23,12 +23,14 @@ export function FavoritesSort() {
 
   return (
     <div className="flex items-center gap-3">
-      <span className="text-foreground text-sm">Ordenar por:</span>
+      <span id="sort-label" className="text-foreground text-sm">
+        Ordenar por:
+      </span>
       <Select
         value={sortBy}
         onValueChange={(v) => setSortBy((v as SortOption) ?? null)}
       >
-        <SelectTrigger>
+        <SelectTrigger aria-labelledby="sort-label">
           <SelectValue />
         </SelectTrigger>
         <SelectContent>

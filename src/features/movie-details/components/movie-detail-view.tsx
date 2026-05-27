@@ -59,7 +59,10 @@ export function MovieDetailView({ movieId }: MovieDetailViewProps) {
   const backdropUrl = getImageUrl(movie.backdrop_path, "original");
 
   return (
-    <div className="flex flex-col gap-8 md:flex-row md:items-start">
+    <section
+      className="flex flex-col gap-8 md:flex-row md:items-start"
+      aria-label={`Detalhes de ${movie.title}`}
+    >
       <div className="w-full overflow-hidden rounded-xl bg-muted md:w-3/5">
         {backdropUrl ? (
           <img
@@ -83,20 +86,22 @@ export function MovieDetailView({ movieId }: MovieDetailViewProps) {
           ))}
         </div>
 
-        <div className="flex flex-col gap-1.5 text-sm">
-          <p>
-            <span className="font-semibold text-foreground">
+        <dl className="flex flex-col gap-1.5 text-sm">
+          <div className="flex items-center gap-1">
+            <dt className="font-semibold text-foreground">
               Data de lançamento:
-            </span>{" "}
-            <span className="text-muted-foreground">
+            </dt>
+            <dd className="text-muted-foreground">
               {formatDate(movie.release_date)}
-            </span>
-          </p>
-          <p className="flex items-center gap-1.5">
-            <span className="font-semibold text-foreground">Nota TMDB:</span>
-            <MovieRatingBadge rating={movie.vote_average} />
-          </p>
-        </div>
+            </dd>
+          </div>
+          <div className="flex items-center gap-1.5">
+            <dt className="font-semibold text-foreground">Nota TMDB:</dt>
+            <dd>
+              <MovieRatingBadge rating={movie.vote_average} />
+            </dd>
+          </div>
+        </dl>
 
         {movie.overview && (
           <div className="flex flex-col gap-2">
@@ -117,6 +122,6 @@ export function MovieDetailView({ movieId }: MovieDetailViewProps) {
           {active ? "Remover dos Favoritos" : "Adicionar aos Favoritos"}
         </Button>
       </div>
-    </div>
+    </section>
   );
 }
