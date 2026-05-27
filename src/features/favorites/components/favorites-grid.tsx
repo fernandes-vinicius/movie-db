@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import { FavoritesSort } from "@/features/favorites/components/favorites-sort";
 import { RemoveFavoriteButton } from "@/features/favorites/components/remove-favorite-button";
 import { useFavoritesSort } from "@/features/favorites/hooks/use-favorites-sort";
+import { sortFavorites } from "@/features/favorites/utils/sort-favorites";
 import {
   MovieCard,
   MovieCardAction,
@@ -28,20 +29,10 @@ export function FavoritesGrid() {
 
   const [sortBy] = useFavoritesSort();
 
-  const sorted = useMemo(() => {
-    return [...favorites].sort((a, b) => {
-      if (sortBy === "title-asc") {
-        return a.title.localeCompare(b.title, "pt");
-      }
-      if (sortBy === "title-desc") {
-        return b.title.localeCompare(a.title, "pt");
-      }
-      if (sortBy === "rating-desc") {
-        return b.vote_average - a.vote_average;
-      }
-      return a.vote_average - b.vote_average;
-    });
-  }, [favorites, sortBy]);
+  const sorted = useMemo(
+    () => sortFavorites(favorites, sortBy),
+    [favorites, sortBy],
+  );
 
   if (favorites.length === 0) {
     return (
