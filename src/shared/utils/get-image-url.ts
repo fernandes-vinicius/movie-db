@@ -7,5 +7,5 @@ export function getImageUrl(
   size: ImageSize = "w500",
 ): string | null {
   if (!path) return null;
-  return `${env.VITE_TMDB_IMAGE_BASE_URL}/${size}${path.replace(/\.jpg$/, ".webp")}`;
+  return `${env.VITE_TMDB_IMAGE_BASE_URL}/${size}${path}`;
 }
