@@ -15,7 +15,6 @@ const sortLabels: Record<SortOption, string> = {
   "title-asc": "Título (A-Z)",
   "title-desc": "Título (Z-A)",
   "rating-desc": "Nota (maior-menor)",
-  "rating-asc": "Nota (menor-maior)",
 };
 
 export function FavoritesSort() {

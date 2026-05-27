@@ -35,11 +35,6 @@ describe("sortFavorites", () => {
     expect(result.map((m) => m.id)).toEqual([3, 2, 1]);
   });
 
-  it("rating-asc ordena da menor para maior nota", () => {
-    const result = sortFavorites(movies, "rating-asc");
-    expect(result.map((m) => m.id)).toEqual([1, 2, 3]);
-  });
-
   it("não mutua o array original", () => {
     const original = [...movies];
     sortFavorites(movies, "title-asc");
