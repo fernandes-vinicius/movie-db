@@ -1,5 +1,7 @@
 # Movie DB
 
+![thumbnail](public/thumbnail.png)
+
 Aplicação React para explorar filmes, ver detalhes e gerenciar uma lista de favoritos, consumindo a API do [The Movie Database (TMDB)](https://www.themoviedb.org/).
 
 ## Funcionalidades
